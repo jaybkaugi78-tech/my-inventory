@@ -79,7 +79,6 @@ def cmd_find(args):
         print(json.dumps(results, indent=2))
     else:
         print("Provide --barcode or --name to search OpenFoodFacts.")
-
 def build_parser():
     parser = argparse.ArgumentParser(
         description="Inventory Management CLI (talks to the Flask API)"
