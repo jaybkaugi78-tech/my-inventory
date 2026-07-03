@@ -78,7 +78,7 @@ def cmd_find(args):
             return
         print(json.dumps(results, indent=2))
     else:
-        
+
         print("Provide --barcode or --name to search OpenFoodFacts.")
 def build_parser():
     parser = argparse.ArgumentParser(
@@ -132,6 +132,7 @@ def main():
             f"{API_BASE}. Is the Flask server running? (python app.py)"
         )
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
