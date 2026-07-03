@@ -23,7 +23,6 @@ def fetch_product_by_barcode(barcode):
         response.raise_for_status()
     except requests.RequestException as exc:
         return None, str(exc)
-
     data = response.json()
 
     if data.get("status") != 1:
