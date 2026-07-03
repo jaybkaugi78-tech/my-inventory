@@ -1,7 +1,6 @@
 import itertools
 import requests
-from flask import Flask, jsonify, request
-
+from flask import Flask, jsonify, request 
 app = Flask(__name__)
 inventory = []
 _id_counter = itertools.count(1)
