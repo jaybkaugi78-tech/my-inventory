@@ -95,7 +95,6 @@ def test_cmd_find_by_name(mock_get, capsys):
     mock_resp.status_code = 200
     mock_resp.json.return_value = [{"product_name": "Oat Milk"}]
     mock_get.return_value = mock_resp
-
     args = Namespace(barcode=None, name="oat milk")
     cli.cmd_find(args)
     captured = capsys.readouterr()
