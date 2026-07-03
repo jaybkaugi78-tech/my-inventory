@@ -17,7 +17,6 @@ def find_item(item_id):
 def fetch_product_by_barcode(barcode):
     url = f"{OFF_BASE_URL}/api/v2/product/{barcode}.json"
     headers = {"User-Agent": OFF_USER_AGENT}
-
     try:
         response = requests.get(url, headers=headers, timeout=OFF_REQUEST_TIMEOUT)
         response.raise_for_status()
