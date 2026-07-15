@@ -22,6 +22,9 @@ inventory_api/
 ├── cli.py                 # Command-line interface
 ├── requirements.txt
 ├── README.md
+├── frontend/               # Optional Vite + React admin UI (bonus, alongside the CLI)
+│   ├── src/
+│   └── ...
 └── tests/
     ├── test_api.py
     └── test_cli.py
@@ -58,7 +61,7 @@ inventory_api/
 
 | Method | Endpoint                          | Description                                              |
 |--------|------------------------------------|------------------------------------------------------------|
-| GET    | `/inventory`| List all inventory items                                   |
+| GET    | `/inventory`                      | List all inventory items                                   |
 | GET    | `/inventory/<id>`                 | Get a single item by id                                     |
 | POST   | `/inventory`                      | Create a new item (`name` required in JSON body)             |
 | PATCH  | `/inventory/<id>`                 | Update one or more fields of an item                        |
@@ -146,6 +149,35 @@ All external HTTP calls (both to OpenFoodFacts and, in the CLI tests,
 to the local API) are mocked with `unittest.mock`, so the test suite
 runs offline and does not depend on the real OpenFoodFacts service
 being reachable.
+
+## Optional: React Frontend
+
+Alongside the required CLI, this project also includes an optional
+Vite + React admin UI in `frontend/`. It talks to the same Flask API
+and supports full CRUD plus the OpenFoodFacts barcode/name lookup.
+
+### Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open the URL Vite prints (typically `http://localhost:5173`). Make
+sure the Flask API is running separately first (`python app.py` from
+the project root) — the Vite dev server proxies `/inventory/*`
+requests straight through to `http://127.0.0.1:5000`, so no CORS
+setup is needed.
+
+### Build for production
+
+```bash
+cd frontend
+npm run build
+```
+
+Output goes to `frontend/dist/`.
 
 ## Notes
 
